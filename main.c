@@ -1,4 +1,8 @@
 // TODO: add the appropriate head files here
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <stdio.h>
 
 /************************************************************\
  * get_arguments - returns the command line arguments not
