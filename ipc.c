@@ -14,6 +14,7 @@ char* ipc_create(int size){
     int fd;
     /* pointer to shared memory obect */
     char* ptr;
+    ////////////////////////////////////memcopy
 
     // TODO: create the shared memory object called lab2
 
