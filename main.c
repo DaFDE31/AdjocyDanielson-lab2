@@ -77,11 +77,10 @@ int main(int argc, char** argv)
         //       Use the variable status to store status of child. 
         wait(NULL);
         
-        // TODO: get the current time using gettimeofday
         gettimeofday(&current_time, NULL);
-        // TODO: read the start time from IPC
+
         print(start_time);
-        // TODO: close IPC
+
         ipc_close;
         // NOTE: DO NOT ALTER THE LINE BELOW.
         printf("Elapsed time %.5f\n",elapsed_time(&start_time, &current_time));
