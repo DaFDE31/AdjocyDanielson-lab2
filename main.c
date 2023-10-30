@@ -65,7 +65,7 @@ int main(int argc, char** argv)
         // TODO: use gettimeofday to log the start time
         gettimeofday(&start_time, NULL);
         // TODO: write the time to the IPC
-        sprint(ipc_ptr, start_time);
+        sprintf(ipc_ptr,"%s", start_time);
         // TODO: get the list of arguments to be used in execvp() and 
         // execute execvp()
         command_args = get_arguments(argc, argv);
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
         
         gettimeofday(&current_time, NULL);
 
-        print(start_time);
+        printf("%s",start_time);
 
         ipc_close;
         // NOTE: DO NOT ALTER THE LINE BELOW.

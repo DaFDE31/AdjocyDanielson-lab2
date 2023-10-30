@@ -6,7 +6,7 @@ double elapsed_time(struct timeval* start_time, struct timeval* end_time){
 
     double end = end_time->tv_sec + (end_time->tv_usec / 1000000);
 
-    double value = end- start;
+    double value = (end- start)/1000000;
     
     return value;
 }
