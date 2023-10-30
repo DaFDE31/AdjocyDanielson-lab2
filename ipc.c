@@ -30,7 +30,7 @@ char* ipc_create(int size){
 
     ftruncate(fd,size);
 
-    ptr = mmap(0,size,PROT_WRITE,MAP_SHARED,fd,0);
+    ptr = mmap(0,size,PROT_READ | PROT_WRITE,MAP_SHARED,fd,0);
     return ptr;
 }
 

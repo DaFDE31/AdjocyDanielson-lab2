@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     
     // TODO: call ipc_create to create shared memory region to which parent
     //       child have access.
-    ipc_create(sizeof(start_time));
+    ipc_ptr = ipc_create(sizeof(start_time));
     /* fork a child process */
     pid = fork();
 
@@ -62,10 +62,9 @@ int main(int argc, char** argv)
         return 2;
     }
     else if (pid == 0) { /*child process */
-        // TODO: use gettimeofday to log the start time
         gettimeofday(&start_time, NULL);
-        // TODO: write the time to the IPC
-        sprintf(ipc_ptr,"%s", start_time);
+
+        memcpy(ipc_ptr,&start_time, sizeof(start_time));
         // TODO: get the list of arguments to be used in execvp() and 
         // execute execvp()
         command_args = get_arguments(argc, argv);
@@ -73,13 +72,11 @@ int main(int argc, char** argv)
 
     }
     else { /* parent process */
-        // TODO: have parent wait and get status of child.
-        //       Use the variable status to store status of child. 
         wait(NULL);
         
         gettimeofday(&current_time, NULL);
 
-        printf("%s",start_time);
+        memcpy(&start_time,ipc_ptr, sizeof(start_time));
 
         ipc_close;
         // NOTE: DO NOT ALTER THE LINE BELOW.
